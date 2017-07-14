@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Print.js 演示</title>
+<meta name="author" content="DH">
+<meta name="author" content="http://denghao.me">
+<link rel="stylesheet" href="files/comm.css"/>
+<style>
+  .wrap{
+    margin: 0 auto;
+    padding: 20px;
+    width: 640px;
+    border:1px solid #ccc;
+  }
+  .form .row{
+    padding: 10px 0 0;
+  }
+  .btn{
+     display: block;
+     margin: 20px auto;
+     padding: 8px 16px;
+  }
+</style>
+</head>
+<body>
+
+<div id="wrap" class="wrap">
+  <div class="con">
+      <h1>萨摩耶犬</h1>
+      <ul>
+        <li>
+          <h3>发展历史</h3>
+          <img class="fr" src="files/dog.jpg" width="200">
+          萨摩耶犬是因西伯利亚牧民族萨莫耶德人而得名，原产位于俄罗斯北极地区，起源于17世纪。原始的萨摩耶犬是由如今定居在乌拉尔山以东的极地地区的萨莫耶德游牧部落所培育的。在19世纪末，有毛皮商人将此犬输入美国及欧洲等地。而后该犬传到英国，因其雪白的毛色深得人们喜爱。20世纪初期，北极探险的热潮中，此犬因其天生的特性为探险者提供许多帮助，而获得殊荣。
+        </li>
+        <li>
+          <h3>外形特征</h3>
+          直立的耳朵很厚，呈三角形，尖端略圆。两耳分的较开。眼睛颜色深为佳，两眼凹陷，间距大，杏仁形，下眼睑向耳基部倾斜。鼻子颜色有黑色、棕色、肝褐色，鼻的颜色有时随年龄和气候改变。嘴唇多数是黑色，嘴角上翘。牙齿强壮，剪状咬合。背部直，中等长度，肌肉丰满。脚大而长，比较平，似野兔的足，趾稍分开；趾尖呈拱形肉垫厚而硬，趾之间有保护的毛，脚圆形或似猫足。尾巴比较长，自然下垂时可达 跗关节部，尾部被毛长而厚，当犬处于戒备状态时，尾上翘高于背部或位于背部一侧，休息时下垂。
+        </li>
+        <li>
+          <h3>问卷</h3>
+          <div class="form">
+            <div class="row">名字：<input type="text" placeholder="请留下您的名字"></div>
+            <div class="row">性别：<input type="radio" name="radio">先生 <input type="radio" name="radio">女士</div>
+            <div class="row">你家有宠物吗: <input type="checkbox">有</div>
+            <div class="row">留言：<textarea class="vt" cols="60" rows="10"></textarea></div>
+          </div>
+        </li>
+      </ul>
+  </div>
+  <button class="btn no-print" onClick="Print('#wrap')">打印</button>
+</div>
+
+<script src="files/Print.js"></script>
+</body>
+</html>
