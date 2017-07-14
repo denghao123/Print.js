@@ -19,11 +19,11 @@
 
  3. 指定不打印区域
 
-> a. 添加no-print样式类
+> 方法一. 添加no-print样式类
 
 		<div class="no-print">不要打印我</div>
 
-> b. 自定义类名
+> 方法二. 自定义类名
 
 		Print('#Dom',{'no-print':'.do-not-print-me-xxx'});
 		
