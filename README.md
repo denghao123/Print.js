@@ -40,8 +40,7 @@
 
 #### 注意
  1. 不支持background-color背景色打印，试试用background-image代替
- 2. 只在浏览器中预览打印，未实际打印过, 公司无公用打印机.../汗
- 3. 低级浏览器兼容性待验证
+ 2. 低级浏览器兼容性待验证
 
   [1]: files/print.jpg
   [2]: http://denghao.me/demo/2017/Print.js/index.html
