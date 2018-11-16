@@ -2,12 +2,14 @@
  * DH (http://denghao.me)
  * 2017-7-14
  */
-(function(window, document) {
-  var Print = function(dom, options) {
+(function (window, document) {
+  var Print = function (dom, options) {
     if (!(this instanceof Print)) return new Print(dom, options);
 
     this.options = this.extend({
-      'noPrint': '.no-print'
+      noPrint: '.no-print',
+      onStart: function () { },
+      onEnd: function () { }
     }, options);
 
     if ((typeof dom) === "string") {
@@ -19,18 +21,18 @@
     this.init();
   };
   Print.prototype = {
-    init: function() {
+    init: function () {
       var content = this.getStyle() + this.getHtml();
       this.writeIframe(content);
     },
-    extend: function(obj, obj2) {
+    extend: function (obj, obj2) {
       for (var k in obj2) {
         obj[k] = obj2[k];
       }
       return obj;
     },
 
-    getStyle: function() {
+    getStyle: function () {
       var str = "",
         styles = document.querySelectorAll('style,link');
       for (var i = 0; i < styles.length; i++) {
@@ -41,7 +43,7 @@
       return str;
     },
 
-    getHtml: function() {
+    getHtml: function () {
       var inputs = document.querySelectorAll('input');
       var textareas = document.querySelectorAll('textarea');
       var selects = document.querySelectorAll('select');
@@ -82,7 +84,7 @@
       return this.dom.outerHTML;
     },
 
-    writeIframe: function(content) {
+    writeIframe: function (content) {
       var w, doc, iframe = document.createElement('iframe'),
         f = document.body.appendChild(iframe);
       iframe.id = "myIframe";
@@ -93,28 +95,28 @@
       doc.open();
       doc.write(content);
       doc.close();
-      this.toPrint(w);
-
-      setTimeout(function() {
+      this.toPrint(w, function () {
         document.body.removeChild(iframe)
-      }, 100)
+      });
     },
 
-    toPrint: function(frameWindow) {
-      try {
-        setTimeout(function() {
-          frameWindow.focus();
-          try {
-            if (!frameWindow.document.execCommand('print', false, null)) {
-              frameWindow.print();
+    toPrint: function (w, cb) {
+      var _this = this;
+      w.onload = function () {
+        try {
+          setTimeout(function () {
+            w.focus();
+            typeof _this.options.onStart === 'function' && _this.options.onStart();
+            if (!w.document.execCommand('print', false, null)) {
+              w.print();
             }
-          } catch (e) {
-            frameWindow.print();
-          }
-          frameWindow.close();
-        }, 10);
-      } catch (err) {
-        console.log('err', err);
+            typeof _this.options.onEnd === 'function' && _this.options.onEnd();
+            w.close();
+            cb && cb()
+          });
+        } catch (err) {
+          console.log('err', err);
+        }
       }
     }
   };
