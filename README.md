@@ -11,13 +11,20 @@
  
 		<script src="Print.js"></script>
 
- 2. 绑定方法
+ 2. 调用方法
  
 
-		Print('#Dom');
+		Print('#Dom',{
+			noPrint:'.no-print'
+		});
+		
+ 3. 所有参数
+ 
+		noPrint : String 不打印区域,默认'.no-print'
+		onStart : Function 打印前回调
+		onEnd  : Function 打印后回调（不区分确定/取消）
 
-
- 3. 指定不打印区域
+ 4. 指定不打印区域
 
 > 方法一. 添加no-print样式类
 
@@ -25,7 +32,7 @@
 
 > 方法二. 自定义类名
 
-		Print('#Dom',{'no-print':'.do-not-print-me-xxx'});
+		Print('#Dom',{noPrint:'.do-not-print-me-xxx'});
 		
 		<div class="do-not-print-me-xxx">不要打印我</div>
 		
